@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Computacional</title>
+  <link rel="stylesheet" href="src/styles/main.css">
+  <link rel="stylesheet" href="src/styles/components.css">
+  <link rel="stylesheet" href="src/styles/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Main Header -->
+    <header class="app-header">
+      <div class="header-content">
+        <h1 class="app-title">Quiz Computacional</h1>
+        <p class="app-subtitle">Pratique seus conhecimentos básicos de Computação</p>
+      </div>
+      <button id="btn-restart" class="btn btn-secondary btn-restart" aria-label="Reiniciar Quiz">
+        🔄 Reiniciar
+      </button>
+    </header>
+
+    <!-- Main Content View -->
+    <main class="app-main">
+      <!-- Loading View -->
+      <div id="view-loading" class="view view-loading">
+        <div class="spinner"></div>
+        <p>Carregando questões...</p>
+      </div>
+
+      <!-- Quiz Question View -->
+      <div id="view-quiz" class="view view-quiz hidden">
+        <!-- Progress Bar & Indicator -->
+        <div class="quiz-progress-bar">
+          <div id="progress-fill" class="progress-fill" style="width: 10%;"></div>
+        </div>
+        <div class="quiz-status-header">
+          <span id="question-number" class="question-number">Questão 1 de 10</span>
+          <span id="answered-badge" class="badge badge-info hidden">Respondida</span>
+        </div>
+
+        <!-- Question Card -->
+        <div class="card question-card">
+          <h2 id="question-statement" class="question-statement">Enunciado da Questão</h2>
+          
+          <!-- 4 Options List -->
+          <div id="options-container" class="options-list">
+            <!-- Dynamically populated options -->
+          </div>
+
+          <!-- Immediate Feedback Panel -->
+          <div id="feedback-panel" class="feedback-panel hidden">
+            <div id="feedback-badge" class="feedback-badge"></div>
+            <p id="feedback-explanation" class="feedback-explanation"></p>
+          </div>
+        </div>
+
+        <!-- Navigation Action Buttons -->
+        <div class="quiz-actions">
+          <button id="btn-prev" class="btn btn-secondary" disabled>
+            ← Anterior
+          </button>
+          <button id="btn-confirm" class="btn btn-primary" disabled>
+            Confirmar Resposta
+          </button>
+          <button id="btn-next" class="btn btn-primary" disabled>
+            Próxima Questão →
+          </button>
+        </div>
+      </div>
+
+      <!-- Results View -->
+      <div id="view-results" class="view view-results hidden">
+        <div class="card result-card">
+          <div class="result-header">
+            <span class="result-icon">🏆</span>
+            <h2>Resultado Final</h2>
+            <p>Confira seu desempenho no Quiz Computacional:</p>
+          </div>
+
+          <div class="results-stats-grid">
+            <div class="stat-box stat-correct">
+              <span id="stat-correct-count" class="stat-number">0</span>
+              <span class="stat-label">Acertos</span>
+            </div>
+            <div class="stat-box stat-incorrect">
+              <span id="stat-incorrect-count" class="stat-number">0</span>
+              <span class="stat-label">Erros</span>
+            </div>
+            <div class="stat-box stat-percentage">
+              <span id="stat-percentage" class="stat-number">0%</span>
+              <span class="stat-label">Aproveitamento</span>
+            </div>
+          </div>
+
+          <div class="result-actions">
+            <button id="btn-restart-final" class="btn btn-primary btn-large">
+              🔄 Reiniciar Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Reset Confirmation Modal -->
+  <div id="modal-reset" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <h3 id="modal-title" class="modal-title">Reiniciar Quiz?</h3>
+      <p class="modal-message">Você tem certeza que deseja reiniciar? Todo o seu progresso atual será zerado.</p>
+      <div class="modal-actions">
+        <button id="modal-btn-cancel" class="btn btn-secondary">Cancelar</button>
+        <button id="modal-btn-confirm" class="btn btn-danger">Sim, Reiniciar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JS Module Entry -->
+  <script type="module" src="src/ui/main.js"></script>
+</body>
+</html>
